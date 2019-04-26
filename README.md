@@ -1,28 +1,27 @@
-# Private Prediction Services
+# Privacy-Friendly Analyses Services
 
-This repository demonstrates the centralized Functional Encryption setup (an alternative is a decentralized version where no central authority is needed for key generation).
+This repository demonstrates a centralized Functional Encryption setup (an alternative is a decentralized version where no central authority is needed for key generation).
 
-![Private Prediction components](https://raw.githubusercontent.com/fentec-project/private-analyses/master/img/CDV.png)
+![Privacy-Friendly Analyses components](https://raw.githubusercontent.com/fentec-project/private-analyses/master/img/CDV.png)
 
 Demonstrator comprises three components:
 
  * Key Server: central authority component which generates keys.
 
- * Private Prediction as a Service: the user sends encrypted data to this component
-and obtains the prediction value computed based on the encrypted data. Computation of the predicted value is enabled by Functional Encryption keys which are obtained from the Key Server.
+ * Privacy-Friendly Analyses as a Service: the user sends encrypted data to this component and obtains the result of analysis computed using only encrypted data. Computation is enabled by Functional Encryption keys which are obtained from the Key Server.
 
  * Client: a component which obtains the public key from the Key Server, encrypts
-user’s data with the public key and sends it to the Private Prediction as a
+user’s data with the public key and sends it to the Privacy-Friendly Analyses as a
 Service component.
 
-Various prediction services will be added in the future. Currently, Private Prediction component contains a service to compute the 30-year risk of a general cardiovascular disease (CDV) based on the algorithm from [1], developed using the Framingham heart study [2].
+Various analysis services will be added in the future. Currently, Privacy-Friendly Analyses component contains a service to compute the 30-year risk of a general cardiovascular disease (CDV) based on the algorithm from [1], developed using the Framingham heart study [2].
 
 The Framingham heart study followed roughly 5,000 patients from Framingham, Massachusettes, for many decades starting in 1948. Later, other patients were included. The risk models are algorithms used to assess the risk of specific atherosclerotic CDV events (coronary heart disease, cerebrovascular disease, peripheral vascular disease, heart failure). Algorithms most often estimate the 10-year or 30-year CDV risk of an individual.
 
 The input parameters for algorithms are sex, age, total and high-density
 lipoprotein cholesterol, systolic blood pressure, treatment for hypertension, smoking, and diabetes status. The demonstrator shows how the risk score can be computed using only the encrypted values of the input parameters. 
 
-The user specifies the parameters in the Client program, and these are encrypted and sent to the Private Prediction as a Service component. Private Prediction computes the 30-year risk and returns it to the user.
+The user specifies the parameters in the Client program, and these are encrypted and sent to the Privacy-Friendly Analyses as a Service component. Privacy-Friendly Analyses component computes the 30-year risk and returns it to the user.
 
 ```
 x := data.NewVector([]*big.Int{isMaleInt, ageInt, systolicBPInt, totalChInt, hdlChInt, smokerInt, treatedBPInt, diabeticInt})
@@ -49,8 +48,7 @@ Client encrypts vector x using public key obtained from the Key Server:
 ciphertext, err := paillier.Encrypt(x, masterPubKey)
 ```
 
-Client then sends ciphertext to the Private Prediction component. Private
-Prediction beforehand obtained two functional encryption keys from the Key
+Client then sends ciphertext to the Privacy-Friendly Analyses component. Privacy-Friendly Analyses beforehand obtained two functional encryption keys from the Key
 Server: key to compute the inner-product of x and y1, and key to compute the
 inner-product of x and y2. Now it can compute the inner-products:
 
@@ -62,7 +60,7 @@ xy2, err := paillier.Decrypt(ciphertext, key2, y2)
 To obtain the actual values of inner-products both values need to be divided
 by 100 000 * 100 000. The algorithm then uses these two values to compute the risk. The risk value is returned to the Client. 
 
-Note that the Prediction component knows the risk, but does not know the user's data (sex, age, ... ).
+Note that the Privacy-Friendly Analyses component knows the risk, but does not know the user's data (sex, age, ... ).
 
 
 
