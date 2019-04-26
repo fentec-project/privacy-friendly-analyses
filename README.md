@@ -14,9 +14,9 @@ Demonstrator comprises three components:
 user’s data with the public key and sends it to the Privacy-Friendly Analyses as a
 Service component.
 
-Various analysis services will be added in the future. Currently, Privacy-Friendly Analyses component contains a service to compute the 30-year risk of a general cardiovascular disease (CDV) based on the algorithm from [1], developed using the Framingham heart study [2].
+Various analysis services will be added in the future. Currently, Privacy-Friendly Analyses component contains a service to compute the 30-year risk of a general cardiovascular disease (CVD) based on the algorithm from [1], developed using the Framingham heart study [2].
 
-The Framingham heart study followed roughly 5,000 patients from Framingham, Massachusettes, for many decades starting in 1948. Later, other patients were included. The risk models are algorithms used to assess the risk of specific atherosclerotic CDV events (coronary heart disease, cerebrovascular disease, peripheral vascular disease, heart failure). Algorithms most often estimate the 10-year or 30-year CDV risk of an individual.
+The Framingham heart study followed roughly 5,000 patients from Framingham, Massachusettes, for many decades starting in 1948. Later, other patients were included. The risk models are algorithms used to assess the risk of specific atherosclerotic CVD events (coronary heart disease, cerebrovascular disease, peripheral vascular disease, heart failure). Algorithms most often estimate the 10-year or 30-year CVD risk of an individual.
 
 The input parameters for algorithms are sex, age, total and high-density
 lipoprotein cholesterol, systolic blood pressure, treatment for hypertension, smoking, and diabetes status. The demonstrator shows how the risk score can be computed using only the encrypted values of the input parameters. 
