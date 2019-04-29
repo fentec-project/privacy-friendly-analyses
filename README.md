@@ -1,8 +1,8 @@
 # Privacy-Friendly Analyses Services
 
-This repository demonstrates a centralized Functional Encryption setup (an alternative is a decentralized version where no central authority is needed for key generation).
+This repository demonstrates how privacy-friendly analyses can be run using Functional Encryption. A centralized setup is used (an alternative is a decentralized version where no central authority is needed for key generation).
 
-![Privacy-Friendly Analyses components](https://raw.githubusercontent.com/fentec-project/private-analyses/master/img/CDV.png)
+![Privacy-Friendly Analyses components](https://raw.githubusercontent.com/fentec-project/privacy-friendly-analyses/master/img/CDV.png)
 
 Demonstrator comprises three components:
 
